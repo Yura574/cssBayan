@@ -4,7 +4,7 @@ body {
 }
 
 .wrapper {
-  max-width: 1440px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -14,38 +14,48 @@ input {
   z-index: -1;
 }
 
+.tabs {
+  width: 900px;
+}
+
 .tabs:hover {
   cursor: pointer;
 
   .tab {
-    color: blue;
+
   }
 
-  .icon {
-    display: block;
-    font-weight: 900;
-    font-size: 45px;
-    transform: rotate(0deg);
-    transition: all 0.5s;
+  .tab-label {
+    span {
+      color: black;
+
+      &::after {
+        content: '\254B';
+        //transform: rotate(45deg);
+        //font-size: 30px;
+        font-weight: 900;
+        transition: all 0.5s;
+      }
+    }
+
   }
+
 }
 
 .tab {
-
   padding: 20px 0;
   border-top: 1px solid darkgray;
   width: 900px;
 
+  img {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
 }
 
-.icon {
-  //display: none;
-  display: block;
-  font-weight: 900;
-  font-size: 25px;
-  //transform: rotate(45deg);
-  transition: all 0.5s;
-}
+
 
 .tab-content {
   max-height: 0;
@@ -54,17 +64,14 @@ input {
 }
 
 .tab-label {
-  cursor: pointer;
-  //display: inline-block;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  &::after{
-    content: '+';
-    font-size: 30px;
-    font-weight: 900;
-    transition: all 0.5s;
+  span {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: blue;
   }
+
 }
 
 .tab-wrapper {
@@ -72,34 +79,85 @@ input {
 }
 
 
-input:checked {
-  ~ .tab-label{
-    &::after{
-      transform: rotate(45deg);
-      transition: all 0.5s;
+input:checked, input:hover {
+  ~ .tab-label {
+    span {
+      color: black;
+
+      &::after {
+        transform: rotate(45deg);
+        transition: all 0.5s;
+      }
+    }
+
+    .tab-content {
+      max-height: 100vh;
     }
   }
-
-  ~ .tab-content {
-    max-height: 100vh;
-  }
-
-
 }
+
+//input:hover {
+//  ~ .tab-label {
+//    span {
+//      color: black;
+//
+//      &::after {
+//        transform: rotate(0deg);
+//        transition: all 0.5s;
+//      }
+//    }
+//
+//    .tab-content {
+//      max-height: 100vh;
+//      margin: 0 auto;
+//    }
+//  }
+//}
 
 //input:checked ~ .icon {
 //  font-size: 10px;
 //
 //}
 //
-//input:hover ~ .tab-content {
-//  max-height: 100vh;
-//  //padding: 1em;
-//  + .icon{
-//    color: red;
-//  }
-//
-//}
-//.tab-content:hover{
-//  max-height: 100vh;
-//}
+input:hover ~ .tab-content {
+  max-height: 100vh;
+  //padding: 1em;
+
+
+}
+
+.tab-content:hover {
+  max-height: 100vh;
+}
+
+
+@media (max-width: 320px) {
+  .title {
+    font-size: 50px;
+  }
+  .tabs {
+    font-size: 30px;
+  }
+  .tab-content {
+    & img {
+      width: 300px;
+    }
+  }
+  input:checked {
+    ~ .tab-label {
+      color: black;
+
+      &::after {
+        transform: rotate(0deg);
+        transition: all 0.5s;
+
+      }
+    }
+
+    ~ .tab-content {
+      max-height: 100vh;
+    }
+
+
+  }
+}

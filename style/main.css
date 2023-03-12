@@ -1,9 +1,10 @@
+@charset "UTF-8";
 body {
   background: burlywood;
 }
 
 .wrapper {
-  max-width: 1440px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -13,17 +14,19 @@ input {
   z-index: -1;
 }
 
+.tabs {
+  width: 900px;
+}
+
 .tabs:hover {
   cursor: pointer;
 }
-.tabs:hover .tab {
-  color: blue;
+.tabs:hover .tab-label span {
+  color: black;
 }
-.tabs:hover .icon {
-  display: block;
+.tabs:hover .tab-label span::after {
+  content: "╋";
   font-weight: 900;
-  font-size: 45px;
-  transform: rotate(0deg);
   transition: all 0.5s;
 }
 
@@ -32,12 +35,11 @@ input {
   border-top: 1px solid darkgray;
   width: 900px;
 }
-
-.icon {
+.tab img {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
   display: block;
-  font-weight: 900;
-  font-size: 25px;
-  transition: all 0.5s;
 }
 
 .tab-content {
@@ -46,29 +48,57 @@ input {
   overflow: hidden;
 }
 
-.tab-label {
+.tab-label span {
   cursor: pointer;
   width: 100%;
   display: flex;
   justify-content: space-between;
-}
-.tab-label::after {
-  content: "+";
-  font-size: 30px;
-  font-weight: 900;
-  transition: all 0.5s;
+  color: blue;
 }
 
 .tab-wrapper {
   display: flex;
 }
 
-input:checked ~ .tab-label::after {
+input:checked ~ .tab-label span, input:hover ~ .tab-label span {
+  color: black;
+}
+input:checked ~ .tab-label span::after, input:hover ~ .tab-label span::after {
   transform: rotate(45deg);
   transition: all 0.5s;
 }
-input:checked ~ .tab-content {
+input:checked ~ .tab-label .tab-content, input:hover ~ .tab-label .tab-content {
   max-height: 100vh;
+}
+
+input:hover ~ .tab-content {
+  max-height: 100vh;
+}
+
+.tab-content:hover {
+  max-height: 100vh;
+}
+
+@media (max-width: 320px) {
+  .title {
+    font-size: 50px;
+  }
+  .tabs {
+    font-size: 30px;
+  }
+  .tab-content img {
+    width: 300px;
+  }
+  input:checked ~ .tab-label {
+    color: black;
+  }
+  input:checked ~ .tab-label::after {
+    transform: rotate(0deg);
+    transition: all 0.5s;
+  }
+  input:checked ~ .tab-content {
+    max-height: 100vh;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
