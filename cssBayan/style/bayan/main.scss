@@ -4,40 +4,34 @@ body {
 }
 
 .wrapper {
-  max-width: 1100px;
+  max-width: 70vw;
   margin: 0 auto;
 }
 
 input {
-  position: absolute;
   opacity: 0;
   z-index: -1;
 }
 
 .tabs {
-  width: 900px;
+  width: 100%;
 }
 
 .tabs:hover {
   cursor: pointer;
-
-  .tab {
-
-  }
 
   .tab-label {
     span {
       color: black;
 
       &::after {
-        content: '\254B';
+        content: '+';
         //transform: rotate(45deg);
-        //font-size: 30px;
+        font-size: 30px;
         font-weight: 900;
         transition: all 0.5s;
       }
     }
-
   }
 
 }
@@ -45,16 +39,16 @@ input {
 .tab {
   padding: 20px 0;
   border-top: 1px solid darkgray;
-  width: 900px;
-
+  width: 100%;
+  font-size: 35px;
   img {
+    margin-top: 20px;
     width: 300px;
     margin-left: auto;
     margin-right: auto;
     display: block;
   }
 }
-
 
 
 .tab-content {
@@ -64,8 +58,8 @@ input {
 }
 
 .tab-label {
+  cursor: pointer;
   span {
-    cursor: pointer;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -81,12 +75,15 @@ input {
 
 input:checked, input:hover {
   ~ .tab-label {
+
     span {
       color: black;
 
       &::after {
         transform: rotate(45deg);
         transition: all 0.5s;
+        font-size: 30px;
+        font-weight: 700;
       }
     }
 
@@ -96,68 +93,28 @@ input:checked, input:hover {
   }
 }
 
-//input:hover {
-//  ~ .tab-label {
-//    span {
-//      color: black;
-//
-//      &::after {
-//        transform: rotate(0deg);
-//        transition: all 0.5s;
-//      }
-//    }
-//
-//    .tab-content {
-//      max-height: 100vh;
-//      margin: 0 auto;
-//    }
-//  }
-//}
-
-//input:checked ~ .icon {
-//  font-size: 10px;
-//
-//}
-//
 input:hover ~ .tab-content {
   max-height: 100vh;
-  //padding: 1em;
-
-
 }
 
 .tab-content:hover {
   max-height: 100vh;
 }
 
+@media (max-width: 820px) {
+  .tab{
+    font-size: 30px;
+  }
+}
+
 
 @media (max-width: 320px) {
-  .title {
-    font-size: 50px;
-  }
-  .tabs {
-    font-size: 30px;
+  .tab {
+    font-size: 25px;
   }
   .tab-content {
     & img {
-      width: 300px;
+      width: 200px;
     }
-  }
-  input:checked {
-    ~ .tab-label {
-      color: black;
-
-      &::after {
-        transform: rotate(0deg);
-        transition: all 0.5s;
-
-      }
-    }
-
-    ~ .tab-content {
-      max-height: 100vh;
-    }
-
-
   }
 }
